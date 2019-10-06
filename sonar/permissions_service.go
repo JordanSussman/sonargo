@@ -30,6 +30,18 @@ type Permission struct {
 	WithProjectCreator bool   `json:"withProjectCreator,omitempty"`
 }
 
+type PermissionsListGroupObject struct {
+	Paging *Paging           `json:"paging,omitempty"`
+	Groups *GroupPermissions `json:"groups,omitempty"`
+}
+
+type GroupPermissions struct {
+	ID          string   `json:"id,omitempty"`
+	Name        string   `json:"name,omitempty"`
+	Description string   `json:"description,omitempty"`
+	Permissions []string `json:"permissions,omitempty"`
+}
+
 type PermissionsSearchTemplatesObject struct {
 	DefaultTemplates    []*DefaultTemplate    `json:"defaultTemplates,omitempty"`
 	PermissionTemplates []*PermissionTemplate `json:"permissionTemplates,omitempty"`
@@ -417,6 +429,34 @@ func (s *PermissionsService) UpdateTemplate(opt *PermissionsUpdateTemplateOption
 		return
 	}
 	v = new(PermissionsCreateTemplateObject)
+	resp, err = s.client.Do(req, v)
+	if err != nil {
+		return nil, resp, err
+	}
+	return
+}
+
+type PermissionsListGroupsOption struct {
+	Organization string `url:"organization,omitempty"`
+	P            string `url:"p,omitempty"`
+	Permission   string `url:"permission,omitempty"`
+	ProjectID    string `url:"projectId,omitempty"`
+	ProjectKey   string `url:"projectKey,omitempty"`
+	Ps           string `url:"ps,omitempty"`
+	Q            string `url:"q,omitempty"`
+}
+
+// ListGroups lists groups with their permissions
+func (s *PermissionsService) ListGroups(opt *PermissionsListGroupsOption) (v *PermissionsListGroupObject, resp *http.Response, err error) {
+	err = s.ValidateListGroupOpt(opt)
+	if err != nil {
+		return
+	}
+	req, err := s.client.NewRequest("GET", "permissions/groups", opt)
+	if err != nil {
+		return
+	}
+	v = new(PermissionsListGroupObject)
 	resp, err = s.client.Do(req, v)
 	if err != nil {
 		return nil, resp, err

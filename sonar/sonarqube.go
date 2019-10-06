@@ -8,8 +8,8 @@ import (
 )
 
 const (
-	defaultBaseURL = "http://sonarqube.kubesphere.com/api/"
-	userAgent      = "devops server"
+	defaultBaseURL = "https://sonarcloud.io/web_api/"
+	userAgent      = "sonargo"
 )
 
 type authType int
