@@ -31,8 +31,8 @@ type Permission struct {
 }
 
 type PermissionsListGroupObject struct {
-	Paging *Paging           `json:"paging,omitempty"`
-	Groups *GroupPermissions `json:"groups,omitempty"`
+	Paging *Paging             `json:"paging,omitempty"`
+	Groups []*GroupPermissions `json:"groups,omitempty"`
 }
 
 type GroupPermissions struct {
