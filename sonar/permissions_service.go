@@ -438,11 +438,11 @@ func (s *PermissionsService) UpdateTemplate(opt *PermissionsUpdateTemplateOption
 
 type PermissionsListGroupsOption struct {
 	Organization string `url:"organization,omitempty"`
-	P            string `url:"p,omitempty"`
+	P            int    `url:"p,omitempty"`
 	Permission   string `url:"permission,omitempty"`
 	ProjectID    string `url:"projectId,omitempty"`
 	ProjectKey   string `url:"projectKey,omitempty"`
-	Ps           string `url:"ps,omitempty"`
+	Ps           int    `url:"ps,omitempty"`
 	Q            string `url:"q,omitempty"`
 }
 
