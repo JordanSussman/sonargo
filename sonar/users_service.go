@@ -24,6 +24,7 @@ type User struct {
 	ExternalProvider string   `json:"externalProvider,omitempty"`
 	Groups           []string `json:"groups,omitempty"`
 	Avatar           string   `json:"avatar,omitempty"`
+	LastConnectionDate string `json:"lastConnectionDate,omitempty"`
 }
 
 type UsersChangePasswordOption struct {
