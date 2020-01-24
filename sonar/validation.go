@@ -366,6 +366,9 @@ func (s *RulesService) ValidateTagsOpt(opt *RulesTagsOption) error {
 func (s *RulesService) ValidateUpdateOpt(opt *RulesUpdateOption) error {
 	return nil
 }
+func (s *SettingsService) ValidateSetAlmOpt(opt *SettingsSetAlmOption) error {
+	return nil
+}
 func (s *SettingsService) ValidateListDefinitionsOpt(opt *SettingsListDefinitionsOption) error {
 	return nil
 }
