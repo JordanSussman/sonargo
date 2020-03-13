@@ -85,6 +85,53 @@ type Upgrade struct {
 	Version      string          `json:"version,omitempty"`
 }
 
+type SystemInfo struct {
+	Health string `json:"Health,omitempty"`
+	System struct {
+		ServerID                                                        string `json:"Server ID,omitempty"`
+		Version                                                         string `json:"Version,omitempty"`
+		Docker                                                          bool   `json:"Docker,omitempty"`
+		AcceptedExternalIdentityProviders                               string `json:"Accepted external identity providers,omitempty"`
+		ExternalIdentityProvidersWhoseUsersAreAllowedToSignThemselvesUp string `json:"External identity providers whose users are allowed to sign themselves up,omitempty"`
+		HighAvailability                                                bool   `json:"High Availability,omitempty"`
+		OfficialDistribution                                            bool   `json:"Official Distribution,omitempty"`
+		ForceAuthentication                                             bool   `json:"Force authentication,omitempty"`
+		HomeDir                                                         string `json:"Home Dir,omitempty"`
+		DataDir                                                         string `json:"Data Dir,omitempty"`
+		TempDir                                                         string `json:"Temp Dir,omitempty"`
+		Processors                                                      int    `json:"Processors,omitempty"`
+	} `json:"System,omitempty"`
+	Statistics struct {
+		ID          string `json:"id,omitempty"`
+		Version     string `json:"version,omitempty"`
+		Edition     string `json:"edition,omitempty"`
+		LicenseType string `json:"licenseType,omitempty"`
+		Database    struct {
+			Name    string `json:"name,omitempty"`
+			Version string `json:"version,omitempty"`
+		} `json:"database,omitempty"`
+		Plugins []struct {
+			Name    string `json:"name,omitempty"`
+			Version string `json:"version,omitempty"`
+		} `json:"plugins,omitempty"`
+		UserCount              int  `json:"userCount,omitempty"`
+		ProjectCount           int  `json:"projectCount,omitempty"`
+		UsingBranches          bool `json:"usingBranches,omitempty"`
+		Ncloc                  int  `json:"ncloc,omitempty"`
+		ProjectCountByLanguage []struct {
+			Language string `json:"language,omitempty"`
+			Count    int    `json:"count,omitempty"`
+		} `json:"projectCountByLanguage,omitempty"`
+		NclocByLanguage []struct {
+			Language string `json:"language,omitempty"`
+			Ncloc    int    `json:"ncloc,omitempty"`
+		} `json:"nclocByLanguage,omitempty"`
+		InstallationDate    int64  `json:"installationDate,omitempty"`
+		InstallationVersion string `json:"installationVersion,omitempty"`
+		Docker              bool   `json:"docker,omitempty"`
+	} `json:"Statistics,omitempty"`
+}
+
 type SystemChangeLogLevelOption struct {
 	Level LogLevel `url:"level,omitempty"` // Description:"The new level. Be cautious: DEBUG, and even more TRACE, may have performance impacts.",ExampleValue:""
 }
@@ -177,6 +224,19 @@ func (s *SystemService) Ping() (v *string, resp *http.Response, err error) {
 		return
 	}
 	v = new(string)
+	resp, err = s.client.Do(req, v)
+	if err != nil {
+		return nil, resp, err
+	}
+	return
+}
+
+func (s *SystemService) Info() (v *SystemInfo, resp *http.Response, err error) {
+	req, err := s.client.NewRequest("GET", "system/info", nil)
+	if err != nil {
+		return
+	}
+	v = new(SystemInfo)
 	resp, err = s.client.Do(req, v)
 	if err != nil {
 		return nil, resp, err
