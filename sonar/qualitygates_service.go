@@ -274,9 +274,11 @@ func (s *QualitygatesService) List(opt *QualitygatesListOption) (v *Qualitygates
 }
 
 type QualitygatesProjectStatusOption struct {
-	AnalysisId string `url:"analysisId,omitempty"` // Description:"Analysis id",ExampleValue:"AU-TpxcA-iU5OvuD2FL1"
-	ProjectId  string `url:"projectId,omitempty"`  // Description:"Project id",ExampleValue:"AU-Tpxb--iU5OvuD2FLy"
-	ProjectKey string `url:"projectKey,omitempty"` // Description:"Project key",ExampleValue:"my_project"
+	AnalysisId  string `url:"analysisId,omitempty"`  // Description:"Analysis id",ExampleValue:"AU-TpxcA-iU5OvuD2FL1"
+	ProjectId   string `url:"projectId,omitempty"`   // Description:"Project id",ExampleValue:"AU-Tpxb--iU5OvuD2FLy"
+	ProjectKey  string `url:"projectKey,omitempty"`  // Description:"Project key",ExampleValue:"my_project"
+	PullRequest string `url:"pullRequest,omitempty"` // Description:"Pull Request id",ExampleValue:"5461"
+	Branch      string `url:"branch,omitempty"`      // Description:"Branch key",ExampleValue:"feature/my_branch"
 }
 
 // ProjectStatus Get the quality gate status of a project or a Compute Engine task.<br />Either 'analysisId', 'projectId' or 'projectKey' must be provided<br />The different statuses returned are: OK, WARN, ERROR, NONE. The NONE status is returned when there is no quality gate associated with the analysis.<br />Returns an HTTP code 404 if the analysis associated with the task is not found or does not exist.<br />Requires one of the following permissions:<ul><li>'Administer System'</li><li>'Administer' rights on the specified project</li><li>'Browse' on the specified project</li></ul>
