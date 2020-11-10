@@ -14,7 +14,7 @@ type UserGroupsCreateObject struct {
 type Group struct {
 	Default      bool   `json:"default,omitempty"`
 	Description  string `json:"description,omitempty"`
-	ID           int    `json:"id,omitempty"`
+	ID           string `json:"id,omitempty"`
 	MembersCount int64  `json:"membersCount,omitempty"`
 	Name         string `json:"name,omitempty"`
 	Organization string `json:"organization,omitempty"`
