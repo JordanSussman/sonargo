@@ -143,7 +143,7 @@ type SettingsSetAlmOption struct {
 	AlmSetting string `url:"almSetting,omitempty"`
 	Project    string `url:"project,omitempty"`
 	Repository string `url:"repository,omitempty"`
-	Monorepo   bool   `url:"monorepo",omitempty`
+	Monorepo   bool   `url:"monorepo,omitempty"`
 }
 
 // SetGithubAlm sets the pull request decoration for GitHub on the given project
