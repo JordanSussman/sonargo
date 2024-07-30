@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 	"os"
 
+	. "github.com/JordanSussman/sonargo/sonar"
 	spew "github.com/davecgh/go-spew/spew"
-	. "github.com/magicsong/sonargo/sonar"
 )
 
 var client *Client
@@ -1924,16 +1924,6 @@ func QualityProfilesRestoreFunc() {
 	fmt.Println(resp.StatusCode)
 }
 
-// QualityProfilesRestoreBuiltInFunc testing This web service has no effect since 6.4. It's no more possible to restore built-in quality profiles because they are automatically updated and read only. Returns HTTP code 410.
-func QualityProfilesRestoreBuiltInFunc() {
-	resp, err := client.QualityProfiles.RestoreBuiltIn()
-	if err != nil {
-		fmt.Println(err.Error())
-		os.Exit(1)
-	}
-	fmt.Println(resp.StatusCode)
-}
-
 // QualityProfilesSearchFunc testing Search quality profiles
 func QualityProfilesSearchFunc() {
 	opt := &QualityProfilesSearchOption{
@@ -2083,10 +2073,10 @@ func RulesTagsFunc() {
 // RulesUpdateFunc testing Update an existing rule.<br>Requires the 'Administer Quality Profiles' permission
 func RulesUpdateFunc() {
 	opt := &RulesUpdateOption{
-		DebtRemediationFnOffset: "",
-		DebtRemediationFnType:   "",
-		DebtRemediationFyCoeff:  "",
-		DebtSubCharacteristic:   "",
+		DebtRemediationFnOffset:    "",
+		DebtRemediationFnType:      "",
+		DebtRemediationFyCoeff:     "",
+		DebtSubCharacteristic:      "",
 		Key:                        "squid:magic_test_rule1",
 		MarkdownDescription:        "",
 		MarkdownNote:               "",
