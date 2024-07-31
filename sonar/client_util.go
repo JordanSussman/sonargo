@@ -11,7 +11,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/magicsong/color-glog"
+	glog "github.com/magicsong/color-glog"
 
 	"github.com/google/go-querystring/query"
 )
@@ -135,6 +135,7 @@ func (e *ErrorResponse) Error() string {
 	u := fmt.Sprintf("%s://%s%s", e.Response.Request.URL.Scheme, e.Response.Request.URL.Host, path)
 	return fmt.Sprintf("%s %s: %d %s", e.Response.Request.Method, u, e.Response.StatusCode, e.Message)
 }
+
 func CheckResponse(r *http.Response) error {
 	switch r.StatusCode {
 	case 200, 201, 202, 204, 304:
@@ -156,6 +157,7 @@ func CheckResponse(r *http.Response) error {
 
 	return errorResponse
 }
+
 func parseError(raw interface{}) string {
 	switch raw := raw.(type) {
 	case string:

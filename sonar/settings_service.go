@@ -138,3 +138,27 @@ func (s *SettingsService) Values(opt *SettingsValuesOption) (v *SettingsValuesOb
 	}
 	return
 }
+
+type SettingsSetAlmOption struct {
+	AlmSetting string `url:"almSetting,omitempty"`
+	Project    string `url:"project,omitempty"`
+	Repository string `url:"repository,omitempty"`
+	Monorepo   bool   `url:"monorepo,omitempty"`
+}
+
+// SetGithubAlm sets the pull request decoration for GitHub on the given project
+func (s *SettingsService) SetGithubAlm(opt *SettingsSetAlmOption) (resp *http.Response, err error) {
+	err = s.ValidateSetAlmOpt(opt)
+	if err != nil {
+		return nil, err
+	}
+	req, err := s.client.NewRequest("POST", "alm_settings/set_github_binding", opt)
+	if err != nil {
+		return nil, err
+	}
+	resp, err = s.client.Do(req, nil)
+	if err != nil {
+		return resp, err
+	}
+	return resp, nil
+}

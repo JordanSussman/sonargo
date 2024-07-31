@@ -8,8 +8,8 @@ import (
 )
 
 const (
-	defaultBaseURL = "http://sonarqube.kubesphere.com/api/"
-	userAgent      = "devops server"
+	defaultBaseURL = "https://sonarcloud.io/web_api/"
+	userAgent      = "sonargo"
 )
 
 type authType int
@@ -107,7 +107,7 @@ func (c *Client) Do(req *http.Request, v interface{}) (*http.Response, error) {
 	return Do(c.httpClient, req, v)
 }
 
-// Paging is used in many apis
+//Paging is used in many apis
 type Paging struct {
 	PageIndex int `json:"pageIndex,omitempty"`
 	PageSize  int `json:"pageSize,omitempty"`

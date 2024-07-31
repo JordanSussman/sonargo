@@ -156,6 +156,9 @@ func (s *PermissionsService) ValidateSetDefaultTemplateOpt(opt *PermissionsSetDe
 func (s *PermissionsService) ValidateUpdateTemplateOpt(opt *PermissionsUpdateTemplateOption) error {
 	return nil
 }
+func (s *PermissionsService) ValidateListGroupOpt(opt *PermissionsListGroupsOption) error {
+	return nil
+}
 func (s *PluginsService) ValidateInstallOpt(opt *PluginsInstallOption) error {
 	return nil
 }
@@ -361,6 +364,9 @@ func (s *RulesService) ValidateTagsOpt(opt *RulesTagsOption) error {
 	return nil
 }
 func (s *RulesService) ValidateUpdateOpt(opt *RulesUpdateOption) error {
+	return nil
+}
+func (s *SettingsService) ValidateSetAlmOpt(opt *SettingsSetAlmOption) error {
 	return nil
 }
 func (s *SettingsService) ValidateListDefinitionsOpt(opt *SettingsListDefinitionsOption) error {
