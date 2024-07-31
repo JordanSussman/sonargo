@@ -6,7 +6,7 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-//only available in commercial edition
+// only available in commercial edition
 var _ = XDescribe("SonarCLI integration test", func() {
 	BeforeEach(func() {})
 	JustBeforeEach(func() {})
