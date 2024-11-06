@@ -19,6 +19,7 @@ type Group struct {
 	Name         string `json:"name,omitempty"`
 	Organization string `json:"organization,omitempty"`
 	Selected     bool   `json:"selected,omitempty"`
+	Managed      bool   `json:"managed,omitempty"`
 }
 
 type UserGroupsSearchObject struct {
