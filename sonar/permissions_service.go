@@ -40,6 +40,7 @@ type GroupPermissions struct {
 	Name        string   `json:"name,omitempty"`
 	Description string   `json:"description,omitempty"`
 	Permissions []string `json:"permissions,omitempty"`
+	Managed     bool     `json:"managed,omitempty"`
 }
 
 type PermissionsSearchTemplatesObject struct {
