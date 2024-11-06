@@ -38,6 +38,7 @@ type Component struct {
 	Version          string          `json:"version,omitempty"`
 	Visibility       string          `json:"visibility,omitempty"`
 	Revision         string          `json:"revision,omitempty"`
+	Managed          bool            `json:"managed,omitempty"`
 }
 
 type ComponentsTreeObject struct {
