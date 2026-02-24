@@ -1,4 +1,4 @@
-module github.com/vanniszsu/sonargo
+module github.com/JordanSussman/sonargo
 
 go 1.22
 

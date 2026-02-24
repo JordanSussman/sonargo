@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	. "github.com/vanniszsu/sonargo/sonar"
+	. "github.com/JordanSussman/sonargo/sonar"
 	spew "github.com/davecgh/go-spew/spew"
 )
 
