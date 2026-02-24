@@ -39,6 +39,7 @@ type Component struct {
 	Visibility       string          `json:"visibility,omitempty"`
 	Revision         string          `json:"revision,omitempty"`
 	Managed          bool            `json:"managed,omitempty"`
+	ProjectUUID      string          `json:"projectUuid,omitempty"`
 }
 
 type ComponentsTreeObject struct {
